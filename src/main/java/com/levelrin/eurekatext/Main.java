@@ -7,10 +7,8 @@
 
 package com.levelrin.eurekatext;
 
+import com.levelrin.eurekatext.home.Home;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -20,14 +18,7 @@ public final class Main extends Application {
 
     @Override
     public void start(final Stage stage) {
-        final Label label = new Label("Hello World");
-        label.setId("hello");
-        final Scene scene = new Scene(
-            new StackPane(label),
-            640,
-            480
-        );
-        stage.setScene(scene);
+        stage.setScene(new Home().scene());
         stage.show();
     }
 

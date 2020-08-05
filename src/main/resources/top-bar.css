@@ -1,0 +1,8 @@
+HBox {
+    -fx-max-height: 0;
+}
+
+#top-bar-root {
+    -fx-spacing: 20;
+    -fx-padding: 0 20 0 0;
+}
