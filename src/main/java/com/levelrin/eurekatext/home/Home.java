@@ -33,7 +33,8 @@ public final class Home {
         final Label categoriesLabel = new Label("8 categories");
         final VBox leftBox = new VBox(
             new Group(categoriesLabel),
-            this.categoryList()
+            this.categoryList(),
+            this.bottomLeft()
         );
         leftBox.setId("left-box");
         final VBox root = new VBox(
@@ -71,18 +72,38 @@ public final class Home {
      * @return Category list.
      */
     private Node categoryList() {
-        final FontIcon square1 = new FontIcon(FontAwesome.SQUARE);
-        final Label category1 = new Label("Category 1");
-        final HBox hBox1 = new HBox(square1, category1);
-        final FontIcon square2 = new FontIcon(FontAwesome.SQUARE);
-        final Label category2 = new Label("Category 2");
-        final HBox hBox2 = new HBox(square2, category2);
-        final FontIcon square3 = new FontIcon(FontAwesome.SQUARE);
-        final Label category3 = new Label("Category 3");
-        final HBox hBox3 = new HBox(square3, category3);
-        final VBox vBox = new VBox(hBox1, hBox2, hBox3);
-        final ScrollPane root = new ScrollPane(vBox);
+        final FontIcon squareFirst = new FontIcon(FontAwesome.SQUARE);
+        final Label categoryFirst = new Label("Category 1");
+        final HBox firstBox = new HBox(squareFirst, categoryFirst);
+        final FontIcon squareSecond = new FontIcon(FontAwesome.SQUARE);
+        final Label categorySecond = new Label("Category 2");
+        final HBox secondBox = new HBox(squareSecond, categorySecond);
+        final FontIcon squareThird = new FontIcon(FontAwesome.SQUARE);
+        final Label categoryThird = new Label("Category 3");
+        final HBox thirdBox = new HBox(squareThird, categoryThird);
+        final VBox wholeBox = new VBox(firstBox, secondBox, thirdBox);
+        final ScrollPane root = new ScrollPane(wholeBox);
         root.getStylesheets().add("category-list.css");
+        return root;
+    }
+
+    /**
+     * Bottom left area of the home page.
+     * @return Bottom left area.
+     */
+    private Node bottomLeft() {
+        final FontIcon trash = new FontIcon(FontAwesome.TRASH);
+        final Label deletedMemo = new Label("deleted memo");
+        final HBox trashBox = new HBox(trash, new Group(deletedMemo));
+        trashBox.setId("hBoxTrash");
+        final FontIcon gear = new FontIcon(FontAwesome.GEAR);
+        final Label setting = new Label("setting");
+        final HBox settingBox = new HBox(gear, setting);
+        final FontIcon plusCircle = new FontIcon(FontAwesome.PLUS_CIRCLE);
+        final Label newCategory = new Label("new category");
+        final HBox newBox = new HBox(plusCircle, newCategory);
+        final VBox root = new VBox(trashBox, settingBox, newBox);
+        root.getStylesheets().add("home-bottom-left.css");
         return root;
     }
 
