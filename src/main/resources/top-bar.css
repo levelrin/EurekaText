@@ -5,4 +5,5 @@ HBox {
 #top-bar-root {
     -fx-spacing: 20;
     -fx-padding: 0 20 0 0;
+    -fx-border-color: silver;
 }

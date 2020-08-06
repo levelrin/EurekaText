@@ -8,11 +8,13 @@
 package com.levelrin.eurekatext.home;
 
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import org.kordamp.ikonli.fontawesome.FontAwesome;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -27,8 +29,15 @@ public final class Home {
      */
     public Scene scene() {
         final Node topBar = this.topBar();
-        final StackPane root = new StackPane(topBar);
+        final Label categoriesLabel = new Label("8 categories");
+        final VBox leftBox = new VBox(new Group(categoriesLabel));
+        leftBox.setId("left-box");
+        final VBox root = new VBox(
+            topBar,
+            leftBox
+        );
         root.setId("home-root");
+        root.getStylesheets().add("home.css");
         StackPane.setAlignment(topBar, Pos.TOP_CENTER);
         final double width = 825;
         final double height = 550;
