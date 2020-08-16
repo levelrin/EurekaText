@@ -9,6 +9,7 @@ package com.levelrin.eurekatext.home;
 
 import com.levelrin.eurekatext.home.bottomleft.BottomLeftHome;
 import com.levelrin.eurekatext.home.categorylist.CategoryList;
+import com.levelrin.eurekatext.home.content.Content;
 import com.levelrin.eurekatext.home.textlist.TextList;
 import com.levelrin.eurekatext.home.topbar.TopBar;
 import javafx.geometry.Pos;
@@ -21,6 +22,7 @@ import javafx.scene.layout.VBox;
 /**
  * Home page (initial screen).
  */
+@SuppressWarnings("ClassDataAbstractionCoupling")
 public final class Home {
 
     /**
@@ -34,7 +36,11 @@ public final class Home {
             new BottomLeftHome().node()
         );
         leftBox.setId("left-box");
-        final HBox hbox = new HBox(leftBox, new TextList().node());
+        final HBox hbox = new HBox(
+            leftBox,
+            new TextList().node(),
+            new Content().node()
+        );
         final VBox root = new VBox(
             topBar,
             hbox
