@@ -10,7 +10,9 @@ package com.levelrin.eurekatext.home.topbar;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import org.kordamp.ikonli.fontawesome.FontAwesome;
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -26,10 +28,13 @@ public final class TopBar {
     public Node node() {
         final FontIcon plus = new FontIcon(FontAwesome.PLUS);
         final Label newMemoLabel = new Label("new memo");
-        final HBox newMemo = new HBox(plus, newMemoLabel);
+        final HBox newMemo = new HBox(new StackPane(plus), newMemoLabel);
+        newMemo.getStyleClass().add("entity");
         final FontIcon searchIcon = new FontIcon(FontAwesome.SEARCH);
-        final Label searchLabel = new Label("search");
-        final HBox search = new HBox(searchIcon, searchLabel);
+        final TextField searchField = new TextField();
+        searchField.setPromptText("search");
+        final HBox search = new HBox(new StackPane(searchIcon), searchField);
+        search.getStyleClass().add("entity");
         final HBox root = new HBox(newMemo, search);
         root.getStylesheets().add("top-bar.css");
         root.setAlignment(Pos.CENTER_RIGHT);
