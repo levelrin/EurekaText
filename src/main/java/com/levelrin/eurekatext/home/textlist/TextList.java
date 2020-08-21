@@ -7,6 +7,7 @@
 
 package com.levelrin.eurekatext.home.textlist;
 
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -23,21 +24,44 @@ public final class TextList {
      * @return Text list UI.
      */
     public Node node() {
-        final String firstLine = "Ellipsis should be display if the text is too long.";
-        final Label titleUno = new Label("title1");
-        final Label ellipsisUno = new Label(firstLine);
-        final Label tagUno = new Label("tag1");
-        final Label timeUno = new Label("time1");
-        final VBox boxUno = new VBox(titleUno, ellipsisUno, tagUno, timeUno, new Separator());
-        final Label titleDos = new Label("title2");
-        final Label ellipsisDos = new Label(firstLine);
-        final Label tagDos = new Label("tag2");
-        final Label timeDos = new Label("time2");
-        final VBox boxDos = new VBox(titleDos, ellipsisDos, tagDos, timeDos, new Separator());
-        final VBox box = new VBox(boxUno, boxDos);
+        final VBox box = new VBox(
+            this.text(),
+            this.text(),
+            this.text(),
+            this.text(),
+            this.text(),
+            this.text(),
+            this.text()
+        );
         final ScrollPane root = new ScrollPane(box);
+        root.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         root.getStylesheets().add("text-list.css");
         return root;
+    }
+
+    /**
+     * Create a sample text in the text list.
+     * @return Sample text UI.
+     */
+    private Node text() {
+        final String firstLine = "Ellipsis should be display if the text is too long.";
+        final Label title = new Label("title");
+        title.getStyleClass().add("title");
+        final Label ellipsis = new Label(firstLine);
+        ellipsis.getStyleClass().add("firstLine");
+        final Label tag = new Label("tag");
+        tag.getStyleClass().add("tag");
+        final Label time = new Label("time");
+        time.getStyleClass().add("date");
+        final VBox boxUno = new VBox(
+            title,
+            ellipsis,
+            new Group(tag),
+            time,
+            new Separator()
+        );
+        boxUno.getStyleClass().add("textVbox");
+        return boxUno;
     }
 
 }
