@@ -48,8 +48,8 @@ public final class Home {
         root.setId("home-root");
         root.getStylesheets().add("home.css");
         StackPane.setAlignment(topBar, Pos.TOP_CENTER);
-        final double width = 825;
-        final double height = 550;
+        final double width = 1225;
+        final double height = 800;
         return new Scene(root, width, height);
     }
 

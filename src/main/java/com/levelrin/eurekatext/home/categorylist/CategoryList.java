@@ -26,19 +26,35 @@ public final class CategoryList {
      */
     public Node node() {
         final Label categoriesLabel = new Label("8 categories");
-        final FontIcon squareFirst = new FontIcon(FontAwesome.SQUARE);
-        final Label categoryFirst = new Label("Category 1");
-        final HBox firstBox = new HBox(squareFirst, categoryFirst);
-        final FontIcon squareSecond = new FontIcon(FontAwesome.SQUARE);
-        final Label categorySecond = new Label("Category 2");
-        final HBox secondBox = new HBox(squareSecond, categorySecond);
-        final FontIcon squareThird = new FontIcon(FontAwesome.SQUARE);
-        final Label categoryThird = new Label("Category 3");
-        final HBox thirdBox = new HBox(squareThird, categoryThird);
-        final VBox wholeBox = new VBox(categoriesLabel, firstBox, secondBox, thirdBox);
-        final ScrollPane root = new ScrollPane(wholeBox);
+        categoriesLabel.setId("categoriesLabel");
+        final VBox categoriesBox = new VBox(
+            this.category(),
+            this.category(),
+            this.category(),
+            this.category(),
+            this.category(),
+            this.category(),
+            this.category(),
+            this.category()
+        );
+        categoriesBox.setId("categoriesBox");
+        final ScrollPane scroll = new ScrollPane(categoriesBox);
+        categoriesBox.prefWidthProperty().bind(scroll.widthProperty());
+        final VBox root = new VBox(categoriesLabel, scroll);
         root.getStylesheets().add("category-list.css");
         return root;
+    }
+
+    /**
+     * Create a sample category in the category list.
+     * @return Sample category UI.
+     */
+    private Node category() {
+        final FontIcon square = new FontIcon(FontAwesome.SQUARE);
+        final Label category = new Label("Category");
+        final HBox hbox = new HBox(square, category);
+        hbox.getStyleClass().add("categoryBox");
+        return hbox;
     }
 
 }

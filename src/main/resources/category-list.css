@@ -1,4 +1,28 @@
 ScrollPane {
     -fx-hbar-policy: never;
     -fx-pref-height: 69420;
+    -fx-background-color: lightgrey;
+    -fx-border-color: transparent transparent grey transparent;
+}
+
+ScrollPane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.categoryBox {
+    -fx-spacing: 6;
+    -fx-padding: 0 0 0 6;
+}
+
+#categoriesLabel {
+    -fx-text-fill: dimgrey;
+    -fx-border-color: transparent transparent grey transparent;
+    -fx-pref-width: 69420;
+    -fx-alignment: center;
+    -fx-background-color: whitesmoke;
+}
+
+#categoriesBox {
+    -fx-spacing: 6;
+    -fx-padding: 6 0 0 0;
 }
