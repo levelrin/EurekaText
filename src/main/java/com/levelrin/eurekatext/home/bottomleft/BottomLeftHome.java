@@ -36,6 +36,7 @@ public final class BottomLeftHome {
         final Label newCategory = new Label("new category");
         final HBox newBox = new HBox(plusCircle, newCategory);
         final VBox root = new VBox(trashBox, settingBox, newBox);
+        root.setId("home-bottom-root");
         root.getStylesheets().add("home-bottom-left.css");
         return root;
     }
