@@ -19,6 +19,7 @@ public final class Main extends Application {
     @Override
     public void start(final Stage stage) {
         stage.setScene(new Home().scene());
+        stage.setTitle("EurekaText");
         stage.show();
     }
 
