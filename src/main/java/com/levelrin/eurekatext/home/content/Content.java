@@ -13,6 +13,7 @@ import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.kordamp.ikonli.fontawesome.FontAwesome;
 import org.kordamp.ikonli.javafx.FontIcon;
@@ -21,6 +22,7 @@ import org.kordamp.ikonli.javafx.FontIcon;
  * Content of the text on the home page.
  * The user can edit the text from here.
  */
+@SuppressWarnings("ClassDataAbstractionCoupling")
 public final class Content {
 
     /**
@@ -28,26 +30,32 @@ public final class Content {
      * @return The text content UI.
      */
     public Node node() {
-        final Label datetimes = new Label(
-            "last editied 07/07/2020 20:55 \tcreated 09/11/1995 19:24"
+        final Label datetime = new Label(
+            "last edited 07/07/2020 20:55 \tcreated 09/11/1995 19:24"
         );
+        datetime.setId("datetime");
         final FontIcon tagIcon = new FontIcon(FontAwesome.TAG);
         final Label tags = new Label("tags");
-        final HBox hboxTags = new HBox(
-            tagIcon,
+        final FontIcon plus = new FontIcon(FontAwesome.PLUS_CIRCLE);
+        plus.setId("plus");
+        final HBox tagsBox = new HBox(
+            new StackPane(tagIcon),
             tags,
             this.tag("2020"),
             this.tag("highschool"),
             this.tag("yoiyoi"),
-            new FontIcon(FontAwesome.PLUS_CIRCLE)
+            new StackPane(plus)
         );
-        return new VBox(
-            datetimes,
-            hboxTags,
+        tagsBox.setId("tags-box");
+        final VBox root = new VBox(
+            datetime,
+            tagsBox,
             new Separator(),
             new TextField("Test"),
             new TextArea("Sample Text")
         );
+        root.getStylesheets().add("content.css");
+        return root;
     }
 
     /**
@@ -58,7 +66,9 @@ public final class Content {
     private Node tag(final String name) {
         final FontIcon remove = new FontIcon(FontAwesome.CLOSE);
         final Label label = new Label(name);
-        return new HBox(label, remove);
+        final HBox box = new HBox(label, new StackPane(remove));
+        box.getStyleClass().add("tag-box");
+        return box;
     }
 
 }
