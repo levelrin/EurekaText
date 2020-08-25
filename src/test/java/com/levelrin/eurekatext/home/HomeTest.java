@@ -5,7 +5,7 @@
  * See the details at https://github.com/levelrin/EurekaText/blob/master/LICENSE
  */
 
-package com.levelrin.eurekatext;
+package com.levelrin.eurekatext.home;
 
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
@@ -16,18 +16,22 @@ import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 import org.testfx.matcher.base.NodeMatchers;
 
+/**
+ * Tests.
+ */
 @ExtendWith(ApplicationExtension.class)
-class MainTest {
+final class HomeTest {
 
     @Start
     public void start(final Stage stage) {
-        new Main().start(stage);
+        stage.setScene(new Home().scene());
+        stage.show();
     }
 
     @Test
-    public void shouldDisplayHomePage(final FxRobot robot) {
+    public void checkLayout(final FxRobot robot) {
         FxAssert.verifyThat(
-            "#home-root",
+            "#top-bar-root",
             NodeMatchers.isVisible()
         );
     }

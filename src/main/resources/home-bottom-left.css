@@ -1,0 +1,13 @@
+HBox {
+    -fx-spacing: 6;
+}
+
+#hBoxTrash {
+    -fx-padding: 0 0 50 0;
+}
+
+#home-bottom-root {
+    -fx-background-color: lightgrey;
+    -fx-spacing: 6;
+    -fx-padding: 6 6 6 6;
+}

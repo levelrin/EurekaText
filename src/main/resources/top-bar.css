@@ -1,0 +1,36 @@
+HBox {
+    -fx-max-height: 0;
+    -fx-spacing: 10;
+}
+
+Label{
+    -fx-font-size: 12px;
+    -fx-padding: 3 0 3 0;
+}
+
+FontIcon {
+    -fx-icon-size: 12px;
+}
+
+TextField {
+    -fx-text-box-border: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-background-color: transparent;
+    -fx-font-size: 12px;
+    -fx-padding: 3 0 3 0;
+}
+
+.entity {
+    -fx-background-color: white;
+    -fx-padding: 0 10 0 10;
+    -fx-border-radius: 3 3 3 3;
+    -fx-background-radius: 3 3 3 3;
+}
+
+#top-bar-root {
+    -fx-spacing: 20;
+    -fx-padding: 5 20 5 0;
+    -fx-border-color: grey;
+    -fx-background-color: lightgrey;
+}
