@@ -24,14 +24,13 @@ final class HomeTest {
 
     @Start
     public void start(final Stage stage) {
-        stage.setScene(new Home().scene());
-        stage.show();
+        new Home().show(stage);
     }
 
     @Test
-    public void checkLayout(final FxRobot robot) {
+    public void shouldDisplayHomePage(final FxRobot robot) {
         FxAssert.verifyThat(
-            "#top-bar-root",
+            "#home-root",
             NodeMatchers.isVisible()
         );
     }

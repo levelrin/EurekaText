@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * Home page (initial screen).
@@ -26,10 +27,10 @@ import javafx.scene.layout.VBox;
 public final class Home {
 
     /**
-     * Return JavaFX UI component.
-     * @return The initial screen.
+     * Display the home page.
+     * @param stage JavaFX stage.
      */
-    public Scene scene() {
+    public void show(final Stage stage) {
         final Node topBar = new TopBar().node();
         final VBox leftBox = new VBox(
             new CategoryList().node(),
@@ -50,7 +51,10 @@ public final class Home {
         StackPane.setAlignment(topBar, Pos.TOP_CENTER);
         final double width = 1225;
         final double height = 800;
-        return new Scene(root, width, height);
+        final Scene scene = new Scene(root, width, height);
+        stage.setScene(scene);
+        stage.setTitle("EurekaText");
+        stage.show();
     }
 
 }

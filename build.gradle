@@ -82,7 +82,7 @@ jacocoTestCoverageVerification {
                 enabled = true
                 counter = 'CLASS'
                 value = 'COVEREDRATIO'
-                minimum = 0.90000
+                minimum = 0.87500
             }
         }
     }
