@@ -8,6 +8,7 @@
 package com.levelrin.eurekatext;
 
 import com.levelrin.eurekatext.home.Home;
+import com.levelrin.eurekatext.settings.Settings;
 import com.levelrin.eurekatext.texts.Texts;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -19,6 +20,8 @@ public final class Main extends Application {
 
     @Override
     public void start(final Stage stage) {
+        final Settings settings = new Settings();
+        settings.init();
         final Texts texts = new Texts();
         texts.init();
         new Home().show(stage);
