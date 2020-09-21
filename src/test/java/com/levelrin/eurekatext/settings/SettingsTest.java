@@ -7,11 +7,13 @@
 
 package com.levelrin.eurekatext.settings;
 
+import com.amihaiemil.eoyaml.Yaml;
+import com.amihaiemil.eoyaml.YamlMapping;
+import com.levelrin.eurekatext.settings.homepage.DefaultHome;
+import com.levelrin.eurekatext.settings.homepage.HomePage;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
-import java.nio.file.Path;
-import java.util.function.Supplier;
 
 /**
  * Tests.
@@ -19,31 +21,23 @@ import java.util.function.Supplier;
 final class SettingsTest {
 
     @Test
-    public void shouldCreateFileIfSettingsFileDoesNotExist() {
-        final boolean[] created = {false};
-        final Supplier<Path> createFile = () -> {
-            created[0] = true;
-            return Path.of("settings.yaml");
-        };
-        new Settings(
-            () -> false,
-            createFile
-        ).init();
-        MatcherAssert.assertThat(created[0], CoreMatchers.equalTo(true));
+    public void shouldReturnHomePageObjectIfYamlIsComplete() {
+        final YamlMapping yaml = Yaml.createYamlMappingBuilder().add(
+            "home-page",
+            Yaml.createYamlMappingBuilder().build()
+        ).build();
+        MatcherAssert.assertThat(
+            new Settings(yaml).homePage(),
+            CoreMatchers.instanceOf(HomePage.class)
+        );
     }
 
     @Test
-    public void shouldNotCreateFileIfSettingsFileExists() {
-        final boolean[] created = {false};
-        final Supplier<Path> createFile = () -> {
-            created[0] = true;
-            return Path.of("settings.yaml");
-        };
-        new Settings(
-            () -> true,
-            createFile
-        ).init();
-        MatcherAssert.assertThat(created[0], CoreMatchers.equalTo(false));
+    public void shouldReturnDefaultHomeObjectIfYamlIsIncomplete() {
+        MatcherAssert.assertThat(
+            new Settings(Yaml.createYamlMappingBuilder().build()).homePage(),
+            CoreMatchers.instanceOf(DefaultHome.class)
+        );
     }
 
 }

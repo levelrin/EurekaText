@@ -7,6 +7,7 @@
 
 package com.levelrin.eurekatext.home;
 
+import com.levelrin.eurekatext.settings.FakeSettings;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +25,7 @@ final class HomeTest {
 
     @Start
     public void start(final Stage stage) {
-        new Home().show(stage);
+        new Home(new FakeSettings()).show(stage);
     }
 
     @Test
