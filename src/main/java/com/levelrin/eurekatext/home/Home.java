@@ -12,6 +12,7 @@ import com.levelrin.eurekatext.home.categorylist.CategoryList;
 import com.levelrin.eurekatext.home.content.Content;
 import com.levelrin.eurekatext.home.textlist.TextList;
 import com.levelrin.eurekatext.home.topbar.TopBar;
+import com.levelrin.eurekatext.settings.SettingsType;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -25,6 +26,19 @@ import javafx.stage.Stage;
  */
 @SuppressWarnings("ClassDataAbstractionCoupling")
 public final class Home {
+
+    /**
+     * Settings.
+     */
+    private final SettingsType settings;
+
+    /**
+     * Constructor.
+     * @param settings See {@link Home#settings}.
+     */
+    public Home(final SettingsType settings) {
+        this.settings = settings;
+    }
 
     /**
      * Display the home page.
@@ -49,8 +63,8 @@ public final class Home {
         root.setId("home-root");
         root.getStylesheets().add("home.css");
         StackPane.setAlignment(topBar, Pos.TOP_CENTER);
-        final double width = 1225;
-        final double height = 800;
+        final double width = this.settings.homePage().width();
+        final double height = this.settings.homePage().height();
         final Scene scene = new Scene(root, width, height);
         stage.setScene(scene);
         stage.setTitle("EurekaText");

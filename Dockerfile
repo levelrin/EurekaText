@@ -13,5 +13,4 @@ RUN curl -L https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-a
     rm gradle-${GRADLE_VERSION}-all.zip
 
 WORKDIR /usr/src/myapp
-COPY . /usr/src/myapp
 CMD ["gradle", "build"]

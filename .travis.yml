@@ -2,7 +2,7 @@ services:
   - docker
 
 script:
-  - docker run --rm -v $(pwd)/build:/usr/src/myapp/build levelrin/eurekatext:init
+  - docker run --rm -v $(pwd):/usr/src/myapp levelrin/eurekatext:init-2
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
