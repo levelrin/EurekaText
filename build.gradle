@@ -53,7 +53,7 @@ jacocoTestCoverageVerification {
                 enabled = true
                 counter = 'INSTRUCTION'
                 value = 'COVEREDRATIO'
-                minimum = 0.89878
+                minimum = 0.85769
             }
             limit {
                 enabled = true
@@ -65,25 +65,25 @@ jacocoTestCoverageVerification {
                 enabled = true
                 counter = 'COMPLEXITY'
                 value = 'COVEREDRATIO'
-                minimum = 0.79545
+                minimum = 0.77777
             }
             limit {
                 enabled = true
                 counter = 'LINE'
                 value = 'COVEREDRATIO'
-                minimum = 0.86559
+                minimum = 0.79901
             }
             limit {
                 enabled = true
                 counter = 'METHOD'
                 value = 'COVEREDRATIO'
-                minimum = 0.76315
+                minimum = 0.74358
             }
             limit {
                 enabled = true
                 counter = 'CLASS'
                 value = 'COVEREDRATIO'
-                minimum = 0.92307
+                minimum = 0.90000
             }
         }
     }
@@ -93,6 +93,18 @@ jacocoTestReport {
     reports {
         xml.enabled true
         html.enabled true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(
+            files(
+                classDirectories.files.collect {
+                    fileTree(
+                        dir: it,
+                        exclude: ['com/levelrin/eurekatext/Main*']
+                    )
+                }
+            )
+        )
     }
 }
 
