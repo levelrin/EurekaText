@@ -65,7 +65,9 @@ public final class Home {
         StackPane.setAlignment(topBar, Pos.TOP_CENTER);
         final double width = this.settings.homePage().width();
         final double height = this.settings.homePage().height();
-        final Scene scene = new Scene(root, width, height);
+        final Scene scene = new Scene(root);
+        stage.setWidth(width);
+        stage.setHeight(height);
         stage.setScene(scene);
         stage.setTitle("EurekaText");
         stage.show();
